@@ -1,15 +1,10 @@
 import React, { FC } from 'react';
 
-type Props = {
-  name: string,
-  onClick: () => void,
-};
-
-const NavBar: FC<Props> = ({ onClick, name }) => {
+const NavBar: FC = () => {
 
   return (
-    <div onClick={onClick}>
-      {name}
+    <div className="flex items-center p-4 bg-blue-900 text-white">
+      <div>Tesseract Demo</div>
     </div>
   );
 };
