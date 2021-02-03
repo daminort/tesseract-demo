@@ -1,0 +1,42 @@
+html,
+body {
+    font-size: 14px;
+    padding: 0;
+    margin: 0;
+    min-height: 100%;
+}
+
+body {
+    padding: 32px;
+}
+
+#root {
+    width: auto;
+    margin: 0 auto;
+    height: 100%;
+    border: 1px #c2c2c2 solid;
+    border-radius: 8px;
+    box-shadow: 2px 2px 8px #cccccc;
+    position: relative;
+    background-size: contain;
+}
+
+#selection {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border: 2px #ff5100 dashed;
+    border-radius: 4px;
+    z-index: 100;
+    background: #ffaa00;
+    opacity: 0.4;
+}
+
+#stats {
+    display: flex;
+    padding: 8px;
+    margin: 8px;
+    justify-content: center;
+}
