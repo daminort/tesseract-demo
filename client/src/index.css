@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    @apply bg-white;
+}
+
+.tx-preview {
+    min-height: calc(theme('height.screen') - 82px);
+}

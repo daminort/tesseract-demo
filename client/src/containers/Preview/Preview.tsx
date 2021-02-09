@@ -1,9 +1,11 @@
-import React, { FC } from 'react';
+import React, { FC, useRef } from 'react';
 
 const Preview: FC = () => {
 
+  const ref = useRef(null);
+
   return (
-    <div className="p-2 m-1 border-2 border-gray-400 rounded-lg shadow-sm w-full">
+    <div className="tx-preview p-2 m-1 bg-white rounded-md w-full shadow-2xl" ref={ref}>
       Preview
     </div>
   );

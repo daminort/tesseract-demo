@@ -7,9 +7,9 @@ import { Selections } from 'containers/Selections';
 
 const App: FC = () => {
   return (
-    <div className="font-sans bg-gray-200 h-screen">
+    <div className="tx-app font-sans h-screen">
       <NavBar />
-      <div className="flex justify-between pt-2">
+      <div className="tx-content flex justify-between pt-2 pb-2">
         <Stats />
         <Preview />
         <Selections />
