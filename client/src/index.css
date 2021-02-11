@@ -1,11 +1,6 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
-body {
-    @apply bg-white;
-}
-
-.tx-preview {
-    min-height: calc(theme('height.screen') - 82px);
-}
+@import "./styles/global.css";
+@import "./styles/preview.css";
