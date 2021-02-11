@@ -7,7 +7,7 @@ type Props = {
 const Button: FC<Props> = ({ onClick, children }) => {
 
   return (
-    <button onClick={onClick}>
+    <button className="btn" onClick={onClick}>
       {children}
     </button>
   );
