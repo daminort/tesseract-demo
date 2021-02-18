@@ -3,7 +3,7 @@ import { FileStore, fileStore } from 'stores/File/store';
 
 const context = createContext<FileStore>(fileStore);
 
-const FileStoreProvider: FC = ({ children }): React.ReactElement => {
+const FileStoreProvider: FC = ({ children }) => {
   const { Provider } = context;
 
   return (

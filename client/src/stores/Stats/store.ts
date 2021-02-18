@@ -46,9 +46,9 @@ class StatsStore {
   }
 }
 
-const Stats = new StatsStore();
+const statsStore = new StatsStore();
 
 export {
   StatsStore,
-  Stats,
+  statsStore,
 };

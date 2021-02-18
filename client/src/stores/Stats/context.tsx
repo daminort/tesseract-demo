@@ -1,13 +1,13 @@
 import React, { FC, createContext, useContext } from 'react';
-import { StatsStore, Stats } from './store';
+import { StatsStore, statsStore } from './store';
 
-const context = createContext<StatsStore>(Stats);
+const context = createContext<StatsStore>(statsStore);
 
-const StatsProvider: FC = ({ children }): React.ReactElement => {
+const StatsStoreProvider: FC = ({ children }) => {
   const { Provider } = context;
 
   return (
-    <Provider value={Stats}>
+    <Provider value={statsStore}>
       {children}
     </Provider>
   );
@@ -16,6 +16,6 @@ const StatsProvider: FC = ({ children }): React.ReactElement => {
 const useStatsStore = (): StatsStore => useContext(context);
 
 export {
-  StatsProvider,
+  StatsStoreProvider,
   useStatsStore,
 };
