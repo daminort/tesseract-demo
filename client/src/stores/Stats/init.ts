@@ -1,4 +1,4 @@
-import { StatsFile, StatsImage, StatsScale } from './types';
+import { StatsFile, StatsImage, StatsWorkspace } from './types';
 
 const initFile: StatsFile = {
   name: 'book',
@@ -10,10 +10,13 @@ const initImage: StatsImage = {
   height: 1000,
 };
 
-const initScale: StatsScale = 1.2;
+const initWorkspace: StatsWorkspace = {
+  width: 0,
+  height: 0,
+};
 
 export {
   initFile,
   initImage,
-  initScale,
+  initWorkspace,
 };

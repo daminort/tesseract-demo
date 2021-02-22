@@ -8,4 +8,7 @@ export type StatsImage = {
   height: number,
 };
 
-export type StatsScale = number;
+export type StatsWorkspace = {
+  width: number,
+  height: number,
+};

@@ -1,26 +1,31 @@
-import { makeObservable, action, observable } from 'mobx';
+import { makeObservable, action, observable, computed } from 'mobx';
 
-import { StatsFile, StatsImage, StatsScale } from './types';
-import { initFile, initImage, initScale } from './init';
+import { StatsFile, StatsImage, StatsWorkspace } from './types';
+import { initFile, initImage, initWorkspace } from './init';
 
 class StatsStore {
   file: StatsFile = initFile;
   image: StatsImage = initImage;
-  scale: StatsScale = initScale;
+  workspace: StatsWorkspace = initWorkspace;
 
   constructor() {
     makeObservable(this, {
       file: observable,
       image: observable,
-      scale: observable,
+      workspace: observable,
 
       fileUpdate: action,
       imageUpdate: action,
-      scaleUpdate: action,
+      workspaceUpdate: action,
       reset: action,
+
+      scale: computed,
     });
   }
 
+  /**
+   * Actions
+   */
   fileUpdate(file: Partial<StatsFile>): void {
     this.file = {
       name: file?.name || this.file.name,
@@ -35,15 +40,31 @@ class StatsStore {
     }
   }
 
-  scaleUpdate(scale: StatsScale): void {
-    this.scale = scale;
+  workspaceUpdate(workspace: Partial<StatsWorkspace>): void {
+    this.workspace = {
+      width: workspace?.width || this.workspace.width,
+      height: workspace?.height || this.workspace.height,
+    }
   }
 
   reset(): void {
     this.file = initFile;
     this.image = initImage;
-    this.scale = initScale;
+    this.workspace = initWorkspace;
   }
+
+  /**
+   * Computed
+   */
+  get scale(): number {
+    if (!this.workspace.width) {
+      return 0;
+    }
+
+    const ratio = this.image.width / this.workspace.width;
+    return Number(ratio.toFixed(3));
+  }
+
 }
 
 const statsStore = new StatsStore();
