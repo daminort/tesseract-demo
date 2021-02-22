@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { useObserver, observer } from 'mobx-react-lite';
+import { observer, useObserver } from 'mobx-react-lite';
 
 import { useGeneralStore } from 'stores/General';
 import { FileStore } from 'stores/File';
@@ -13,6 +13,9 @@ const Stats: FC = observer(() => {
   const { image, workspace, scale } = statsStore;
   const { name } = fileStore.file;
 
+  const workspaceWidth = (workspace.width).toFixed(0);
+  const workspaceHeight = (workspace.height).toFixed(0);
+
   return useObserver(() => (
     <div className="tx-stats w-1/6 p-2 mt-1">
       <div className="mb-2">
@@ -24,8 +27,12 @@ const Stats: FC = observer(() => {
         <div className="pl-1">{image.width} x {image.height}</div>
       </div>
       <div className="mb-2">
+        <div className="font-bold">Ratio</div>
+        <div className="pl-1">{(image.ratio).toFixed(3)}</div>
+      </div>
+      <div className="mb-2">
         <div className="font-bold">Workspace</div>
-        <div className="pl-1">{workspace.width} x {workspace.height}</div>
+        <div className="pl-1">{workspaceWidth} x {workspaceHeight}</div>
       </div>
       <div className="mb-2">
         <div className="font-bold">Scale</div>

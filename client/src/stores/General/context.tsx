@@ -2,10 +2,12 @@ import React, { FC, createContext, useContext } from 'react';
 
 import { GeneralStores } from 'stores/General/types';
 import { fileStore } from 'stores/File';
+import { selectionsStore } from 'stores/Selections';
 import { statsStore } from 'stores/Stats';
 
 const stores: GeneralStores = {
   fileStore,
+  selectionsStore,
   statsStore,
 };
 

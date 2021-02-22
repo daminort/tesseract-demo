@@ -34,9 +34,14 @@ class StatsStore {
   }
 
   imageUpdate(image: Partial<StatsImage>): void {
+    const width = image?.width || this.image.width;
+    const height = image?.height || this.image.height;
+    const ratio = height / width;
+
     this.image = {
-      width: image?.width || this.image.width,
-      height: image?.height || this.image.height,
+      width,
+      height,
+      ratio,
     }
   }
 
@@ -44,6 +49,7 @@ class StatsStore {
     this.workspace = {
       width: workspace?.width || this.workspace.width,
       height: workspace?.height || this.workspace.height,
+      padding: workspace?.padding || this.workspace.padding,
     }
   }
 
