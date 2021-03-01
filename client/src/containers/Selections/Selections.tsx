@@ -13,7 +13,7 @@ const Selections: FC = observer(() => {
     <div className="tx-selections w-2/6 p-2 mt-1">
       {selections.map(selection => {
         const { id, top, left, width, height } = selection;
-        const title = `Top: ${top}, Left: ${left}`;
+        const title = `[${left}, ${top}] x [${left + width}, ${top + height}]`;
         return (
           <div className="mb-2" key={id}>
             <div className="font-normal">{title}</div>

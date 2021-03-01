@@ -13,10 +13,24 @@
 .tx-preview-inner {
     @apply p-0;
     position: absolute;
-    z-index: 1;
+    z-index: 100;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     cursor: crosshair;
+}
+
+.tx-preview-current-selection {
+    position: absolute;
+    z-index: 90;
+    border: 2px red dotted;
+    border-radius: 4px;
+}
+
+.tx-preview-selection {
+    position: absolute;
+    z-index: 80;
+    border: 2px orange dotted;
+    border-radius: 4px;
 }
