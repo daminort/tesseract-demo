@@ -3,12 +3,17 @@
     position: relative;
     min-height: calc(theme('height.screen') - 82px);
     box-shadow: 2px 2px 6px theme('colors.shadow');
+
+    img {
+        border: 1px red solid;
+        pointer-events: none;
+    }
 }
 
-.tx-preview img {
-    border: 1px red solid;
-    pointer-events: none;
-}
+/*.tx-preview img {*/
+/*    border: 1px red solid;*/
+/*    pointer-events: none;*/
+/*}*/
 
 .tx-preview-inner {
     @apply p-0;
