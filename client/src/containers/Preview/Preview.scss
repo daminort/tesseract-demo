@@ -1,0 +1,43 @@
+@import "styles/theme";
+
+.root-preview {
+    border-radius: $b-radius-md;
+    position: relative;
+    max-width: 60%;
+    padding: 0.5rem;
+    min-height: calc(100vh - 64px);
+    box-shadow: $shadow-primary;
+
+    img {
+        border: 1px $text-warning dashed;
+        pointer-events: none;
+        width: 100%;
+    }
+
+    .inner {
+        position: absolute;
+        z-index: 100;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        cursor: crosshair;
+    }
+
+    .current-selection {
+        position: absolute;
+        z-index: 90;
+        border: 2px $text-error dashed;
+        border-radius: $b-radius;
+    }
+
+    .selection {
+        position: absolute;
+        z-index: 80;
+        border: 2px $bg-accent solid;
+        border-radius: 4px;
+        background: $bg-accent;
+        opacity: 0.2;
+        filter: invert(1);
+    }
+}

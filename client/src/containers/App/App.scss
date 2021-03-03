@@ -1,0 +1,10 @@
+@import "styles/theme";
+
+.root-app {
+  min-height: 100vh;
+
+  .content {
+    display: flex;
+    padding: 1rem 2rem;
+  }
+}

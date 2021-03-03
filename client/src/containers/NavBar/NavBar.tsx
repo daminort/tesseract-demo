@@ -1,10 +1,14 @@
 import React, { FC } from 'react';
 
+import { FileInfo } from 'containers/NavBar/FileInfo';
+import './Navbar.scss';
+
 const NavBar: FC = () => {
 
   return (
-    <div className="tx-navbar flex items-center p-4 bg-gray-900 text-white">
-      <div>Tesseract Demo</div>
+    <div className="root-navbar">
+      <div className="logo">Tesseract Demo</div>
+      <FileInfo />
     </div>
   );
 };

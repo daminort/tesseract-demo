@@ -1,0 +1,21 @@
+@import "styles/theme";
+
+.root-file-info {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  line-height: 1.2rem;
+
+  .file {
+    display: flex;
+    align-items: center;
+    margin-right: 0.5rem;
+  }
+
+  .item {
+    font-size: 0.8rem;
+    color: $text-contrast-secondary;
+    margin-left: 0.75rem;
+    text-align: center;
+  }
+}

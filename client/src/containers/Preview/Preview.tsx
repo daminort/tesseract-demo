@@ -8,6 +8,8 @@ import { FileStore } from 'stores/File';
 import { StatsStore } from 'stores/Stats';
 import { Selection, SelectionsStore } from 'stores/Selections';
 
+import './Preview.scss';
+
 type Point = {
   x: number,
   y: number,
@@ -125,19 +127,19 @@ const Preview: FC = observer(() => {
   }, [showSelection, start, end, createSelectionStyle]);
 
   return useObserver(() => (
-    <div className="tx-preview" ref={ref} style={outerStyle}>
+    <div className="root-preview" ref={ref} style={outerStyle}>
       <img src={url} alt={url} />
       {selectionsStore.selections.map(s => {
         const style = createSelectionStyle(s);
         return (
-          <div className="tx-preview-selection" key={s.id} style={style}></div>
+          <div className="selection" key={s.id} style={style}></div>
         );
       })}
       {showSelection && (
-        <div className="tx-preview-current-selection" style={selectionStyle}></div>
+        <div className="current-selection" style={selectionStyle}></div>
       )}
       <div
-        className="tx-preview-inner"
+        className="inner"
         onMouseDown={onMouseDown}
         onMouseUp={onMouseUp}
         onMouseMove={onMouseMove}
