@@ -2,9 +2,25 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
   "dependencies": {
-    "@craco/craco": "^6.1.0",
-    "@tailwindcss/postcss7-compat": "^2.0.2",
+    "clsx": "^1.1.1",
+    "mobx": "^6.1.6",
+    "mobx-react-lite": "^3.2.0",
+    "node-sass": "^5.0.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-scripts": "4.0.2",
+    "typescript": "^4.1.2",
+    "uuid": "^8.3.2",
+    "web-vitals": "^1.0.1"
+  },
+  "devDependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -12,26 +28,13 @@
     "@types/node": "^12.0.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
-    "autoprefixer": "^9.8.6",
-    "clsx": "^1.1.1",
-    "mobx": "^6.1.6",
-    "mobx-react-lite": "^3.2.0",
-    "postcss": "^7.0.35",
-    "postcss-import": "^14.0.0",
-    "postcss-nested": "^5.0.3",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-scripts": "4.0.2",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.2",
-    "typescript": "^4.1.2",
-    "uuid": "^8.3.2",
-    "web-vitals": "^1.0.1"
-  },
-  "scripts": {
-    "start": "craco start",
-    "build": "craco build",
-    "test": "craco test",
-    "eject": "react-scripts eject"
+    "@types/uuid": "^8.3.0",
+    "@typescript-eslint/eslint-plugin": "^4.14.2",
+    "@typescript-eslint/parser": "^4.14.2",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-react": "^7.22.0",
+    "prettier": "^2.2.1"
   },
   "eslintConfig": {
     "extends": [
@@ -50,15 +53,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@types/uuid": "^8.3.0",
-    "@typescript-eslint/eslint-plugin": "^4.14.2",
-    "@typescript-eslint/parser": "^4.14.2",
-    "eslint-config-prettier": "^7.2.0",
-    "eslint-plugin-prettier": "^3.3.1",
-    "eslint-plugin-react": "^7.22.0",
-    "postcss-preset-env": "^6.7.0",
-    "prettier": "^2.2.1"
   }
 }
