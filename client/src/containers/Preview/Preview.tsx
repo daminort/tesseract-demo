@@ -3,6 +3,7 @@ import { observer, useObserver } from 'mobx-react-lite';
 import { v4 as uuid } from 'uuid';
 
 import { BrowserUtils } from 'utils/BrowserUtils';
+import { SelectionUtils} from 'utils/SelectionUtils';
 import { useGeneralStore } from 'stores/General';
 import { FileStore } from 'stores/File';
 import { StatsStore } from 'stores/Stats';
