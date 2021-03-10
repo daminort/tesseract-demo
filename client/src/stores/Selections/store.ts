@@ -5,13 +5,16 @@ import { initSelections } from './init';
 
 class SelectionsStore {
   selections: Selections = initSelections;
+  activeID = '';
 
   constructor() {
     makeObservable(this, {
       selections: observable,
+      activeID: observable,
 
       selectionUpsert: action,
       selectionRemove: action,
+      selectionActivate: action,
       reset: action,
     });
   }
@@ -30,8 +33,13 @@ class SelectionsStore {
     this.selections = this.selections.filter(s => s.id !== id);
   }
 
+  selectionActivate(id: string): void {
+    this.activeID = id;
+  }
+
   reset(): void {
     this.selections = initSelections;
+    this.activeID = '';
   }
 }
 

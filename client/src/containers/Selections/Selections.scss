@@ -1,6 +1,91 @@
 @import "styles/theme";
 
 .root-selections {
-  padding: 0 1rem;
+  padding: 2rem;
   width: 40%;
+
+  .selection {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 1rem;
+    border: 1px $bg-info-secondary solid;
+    border-radius: $b-radius-sm;
+    margin-bottom: 2.5rem;
+    cursor: pointer;
+    background-color: transparent;
+    transition: all 0.2s ease;
+
+    &:before,
+    &:after {
+      position: absolute;
+      content: "";
+      width: 0.4rem;
+      height: 0.4rem;
+      border-radius: 50%;
+      background: $bg-info-secondary;
+    }
+
+    &:before {
+      top: -0.2rem;
+      left: -0.2rem;
+    }
+    &:after {
+      bottom: -0.2rem;
+      right: -0.2rem;
+    }
+
+    &:hover {
+      background-color: $bg-selected-item;
+    }
+
+    .delimiter {
+      margin: 0 0.25rem;
+    }
+    .screen {
+      color: $text-success;
+    }
+    .real {
+      color: $text-info;
+    }
+
+    .start {
+      position: absolute;
+      top: -1rem;
+      left: 0;
+      font-size: 0.7rem;
+    }
+    .end {
+      position: absolute;
+      bottom: -1rem;
+      right: 0;
+      font-size: 0.7rem;
+      text-align: right;
+    }
+
+    .badge {
+      position: absolute;
+      top: 0.25rem;
+      left: 0.25rem;
+      background: $bg-info-secondary;
+      border-radius: 50%;
+      color: $text-contrast;
+      font-size: 0.7rem;
+      width: 1.2rem;
+      height: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &.active {
+      background-color: $bg-info-secondary;
+      color: $text-contrast;
+      .badge {
+        background: $border-selection;
+      }
+    }
+
+  }
 }

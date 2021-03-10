@@ -24,7 +24,7 @@
         cursor: crosshair;
     }
 
-    .current-selection {
+    .rectangle {
         position: absolute;
         z-index: 90;
         border: 2px $text-error dashed;

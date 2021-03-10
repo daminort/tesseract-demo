@@ -10,10 +10,10 @@ class SelectionUtils {
       id: uuid(),
       screen,
       real: {
-        top: screen.top * scale,
-        left: screen.left * scale,
-        width: screen.width * scale,
-        height: screen.height * scale,
+        top: Number((screen.top * scale).toFixed(2)),
+        left: Number((screen.left * scale).toFixed(2)),
+        width: Number((screen.width * scale).toFixed(2)),
+        height: Number((screen.height * scale).toFixed(2)),
       }
     }
 
