@@ -1,12 +1,15 @@
 import { makeObservable, action, observable } from 'mobx';
 
+import { RootStore } from 'stores/Root/store';
 import { File } from './types';
 import { initFile } from './init';
 
 class FileStore {
+  rootStore: RootStore;
   file: File = initFile;
 
-  constructor() {
+  constructor(rootStore: RootStore) {
+    this.rootStore = rootStore;
     makeObservable(this, {
       file: observable,
       fileUpdate: action,
@@ -26,9 +29,6 @@ class FileStore {
   }
 }
 
-const fileStore = new FileStore();
-
 export {
   FileStore,
-  fileStore,
 };

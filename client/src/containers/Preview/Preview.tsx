@@ -1,13 +1,13 @@
+import clsx from 'clsx';
 import React, { FC, useRef, useMemo, useEffect, useCallback, useState, MouseEvent } from 'react';
 import { observer, useObserver } from 'mobx-react-lite';
-import { v4 as uuid } from 'uuid';
 
 import { BrowserUtils } from 'utils/BrowserUtils';
 import { SelectionUtils, Point } from 'utils/SelectionUtils';
-import { useGeneralStore } from 'stores/General';
+import { useStore } from 'stores/Root';
 import { FileStore } from 'stores/File';
 import { StatsStore } from 'stores/Stats';
-import { Selection, SelectionSize, SelectionsStore } from 'stores/Selections';
+import { SelectionSize, SelectionsStore } from 'stores/Selections';
 
 import './Preview.scss';
 
@@ -16,32 +16,15 @@ const initPoint: Point = {
   y: 0,
 };
 
-// const createSelection = (start: Point, end: Point): Selection => {
-//   const startTop = Math.min(start.y, end.y);
-//   const startLeft = Math.min(start.x, end.x);
-//   const endTop = Math.max(start.y, end.y);
-//   const endLeft = Math.max(start.x, end.x);
-//
-//   const selection: Selection = {
-//     id: uuid(),
-//     top: Math.max(0, startTop),
-//     left: Math.max(0, startLeft),
-//     width: Math.max(0, endLeft - startLeft),
-//     height: Math.max(0, endTop - startTop),
-//   };
-//
-//   return selection;
-// };
-
 const Preview: FC = observer(() => {
 
   const [start, setStart] = useState<Point>(initPoint);
   const [end, setEnd] = useState<Point>(initPoint);
 
   const ref = useRef<HTMLDivElement>(null);
-  const fileStore = useGeneralStore<FileStore>('fileStore');
-  const selectionsStore = useGeneralStore<SelectionsStore>('selectionsStore');
-  const statsStore = useGeneralStore<StatsStore>('statsStore');
+  const fileStore = useStore<FileStore>('fileStore');
+  const selectionsStore = useStore<SelectionsStore>('selectionsStore');
+  const statsStore = useStore<StatsStore>('statsStore');
 
   const { file } = fileStore;
   const { image, workspace, scale } = statsStore;
@@ -125,12 +108,17 @@ const Preview: FC = observer(() => {
   return useObserver(() => (
     <div className="root-preview" ref={ref} style={outerStyle}>
       <img src={url} alt={url} />
+
       {selectionsStore.selections.map(selection => {
         const style = createRectangleStyle(selection.screen);
+        const className = clsx('selection', {
+          active: selection.id === selectionsStore.activeID,
+        });
         return (
-          <div className="selection" key={selection.id} style={style}></div>
+          <div className={className} key={selection.id} style={style}></div>
         );
       })}
+
       {showRectangle && (
         <div className="rectangle" style={rectangleStyle}></div>
       )}

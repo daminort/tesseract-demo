@@ -1,7 +1,7 @@
 @import "styles/theme";
 
 .root-selections {
-  padding: 2rem;
+  padding: 2rem 0 2rem 2rem;
   width: 40%;
 
   .selection {
@@ -83,7 +83,7 @@
       background-color: $bg-info-secondary;
       color: $text-contrast;
       .badge {
-        background: $border-selection;
+        background: $selection-bg-accent;
       }
     }
 

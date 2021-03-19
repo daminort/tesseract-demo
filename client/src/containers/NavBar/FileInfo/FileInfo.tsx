@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
-import { observer, useObserver } from 'mobx-react-lite';
+import { observer } from 'mobx-react-lite';
 
-import { useGeneralStore } from 'stores/General';
+import { useStore } from 'stores/Root';
 import { FileStore } from 'stores/File';
 import { StatsStore } from 'stores/Stats';
 
@@ -9,8 +9,8 @@ import './FileInfo.scss';
 
 const FileInfo: FC = observer(() => {
 
-  const statsStore = useGeneralStore<StatsStore>('statsStore');
-  const fileStore = useGeneralStore<FileStore>('fileStore');
+  const statsStore = useStore<StatsStore>('statsStore');
+  const fileStore = useStore<FileStore>('fileStore');
 
   const { image, workspace, scale } = statsStore;
   const { name } = fileStore.file;

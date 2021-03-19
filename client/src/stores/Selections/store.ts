@@ -1,13 +1,16 @@
 import { makeObservable, action, observable } from 'mobx';
 
+import { RootStore } from 'stores/Root/store';
 import { Selection, Selections } from './types';
 import { initSelections } from './init';
 
 class SelectionsStore {
+  rootStore: RootStore;
   selections: Selections = initSelections;
   activeID = '';
 
-  constructor() {
+  constructor(rootStore: RootStore) {
+    this.rootStore = rootStore;
     makeObservable(this, {
       selections: observable,
       activeID: observable,
@@ -43,9 +46,6 @@ class SelectionsStore {
   }
 }
 
-const selectionsStore = new SelectionsStore();
-
 export {
   SelectionsStore,
-  selectionsStore,
 };

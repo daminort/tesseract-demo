@@ -1,14 +1,17 @@
 import { makeObservable, action, observable, computed } from 'mobx';
 
+import { RootStore } from 'stores/Root/store';
 import { StatsFile, StatsImage, StatsWorkspace } from './types';
 import { initFile, initImage, initWorkspace } from './init';
 
 class StatsStore {
+  rootStore: RootStore;
   file: StatsFile = initFile;
   image: StatsImage = initImage;
   workspace: StatsWorkspace = initWorkspace;
 
-  constructor() {
+  constructor(rootStore: RootStore) {
+    this.rootStore = rootStore;
     makeObservable(this, {
       file: observable,
       image: observable,
@@ -73,9 +76,6 @@ class StatsStore {
 
 }
 
-const statsStore = new StatsStore();
-
 export {
   StatsStore,
-  statsStore,
 };
