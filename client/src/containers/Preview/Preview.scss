@@ -34,10 +34,17 @@
     .selection {
         position: absolute;
         z-index: 80;
-        border: 2px $bg-accent solid;
+        border: 2px $selection-border solid;
         border-radius: 4px;
-        background: $bg-accent;
+        background: $selection-bg;
         opacity: 0.2;
-        filter: invert(1);
+        filter: brightness(0.1);
+
+        &.active {
+            border: 2px $selection-border-accent solid;
+            background: $selection-bg-accent;
+            opacity: 1;
+            filter: opacity(0.5) brightness(1);
+        }
     }
 }
