@@ -9,6 +9,8 @@ export type Selection = {
   id: string,
   screen: SelectionSize,
   real: SelectionSize,
+  text: string,
+  confidence: number,
 };
 
 export type Selections = Array<Selection>;

@@ -19,7 +19,7 @@ const Selections: FC = observer(() => {
   return useObserver(() => (
     <div className="root-selections">
       {selections.map((selection, index) => {
-        const { id, screen, real } = selection;
+        const { id, screen, real, text, confidence } = selection;
 
         const screenStart = `Screen: ${(screen.left).toFixed(2)}, ${(screen.top).toFixed(2)}`;
         const realStart = `Real: ${(real.left).toFixed(2)}, ${(real.top).toFixed(2)}`;
@@ -31,9 +31,14 @@ const Selections: FC = observer(() => {
           active: id === activeID,
         });
 
+        const showConfidence = (confidence > 0);
+
         return (
           <div key={id} className={selectionClass} onClick={onClick(id)}>
-            <div className="title">ID: {id}</div>
+            <div className="title">{text}</div>
+            {showConfidence && (
+              <div className="confidence" title="Confidence">{confidence.toFixed(1)} %</div>
+            )}
             <div className="start">
               <span className="screen">{screenStart}</span>
               <span className="delimiter">|</span>

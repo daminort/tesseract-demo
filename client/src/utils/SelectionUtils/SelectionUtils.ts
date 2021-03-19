@@ -14,7 +14,9 @@ class SelectionUtils {
         left: Number((screen.left * scale).toFixed(2)),
         width: Number((screen.width * scale).toFixed(2)),
         height: Number((screen.height * scale).toFixed(2)),
-      }
+      },
+      text: 'Recognizing...',
+      confidence: 0,
     }
 
     return selection;

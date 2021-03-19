@@ -2,8 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import { reportWebVitals } from 'reportWebVitals';
+import { createMockServer } from 'mocks';
 import { App } from 'containers/App';
 import 'index.scss';
+
+createMockServer();
 
 ReactDOM.render(
   <React.StrictMode>

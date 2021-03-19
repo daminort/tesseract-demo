@@ -1,6 +1,7 @@
-import { makeObservable, action, observable } from 'mobx';
+import { makeObservable, action, observable, runInAction } from 'mobx';
 
 import { RootStore } from 'stores/Root/store';
+import { selectionsModel } from 'models/SelectionsModel';
 import { Selection, Selections } from './types';
 import { initSelections } from './init';
 
@@ -15,14 +16,15 @@ class SelectionsStore {
       selections: observable,
       activeID: observable,
 
-      selectionUpsert: action,
+      selectionUpsert: action.bound,
+      selectionUpdate: action.bound,
       selectionRemove: action,
       selectionActivate: action,
       reset: action,
     });
   }
 
-  selectionUpsert(selection: Selection): void {
+  async selectionUpsert(selection: Selection): Promise<void> {
     const index = this.selections.findIndex(s => s.id === selection.id);
     if (index >= 0) {
       this.selections[index] = selection;
@@ -30,6 +32,18 @@ class SelectionsStore {
     }
 
     this.selections.push(selection);
+
+    // side-effect
+    const resSelection = await selectionsModel.recognize(selection, '0000');
+    this.selectionUpdate(resSelection);
+  }
+
+  selectionUpdate(selection: Selection): void {
+    const index = this.selections.findIndex(s => s.id === selection.id);
+    if (index >= 0) {
+      this.selections[index] = selection;
+      return;
+    }
   }
 
   selectionRemove(id: string): void {

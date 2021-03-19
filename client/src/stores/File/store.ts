@@ -19,6 +19,7 @@ class FileStore {
 
   fileUpdate(file: Partial<File>): void {
     this.file = {
+      id: file?.id || this.file.id,
       name: file?.name || this.file.name,
       url: file?.url || this.file.url,
     }
