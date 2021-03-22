@@ -3,4 +3,5 @@ export type Config = {
   isProduction: boolean,
   baseURL: string;
   apiURL: string;
+  iconsURL: string;
 }

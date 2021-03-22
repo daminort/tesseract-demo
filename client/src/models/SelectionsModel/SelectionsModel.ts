@@ -14,16 +14,18 @@ class SelectionsModel {
       selectionID: selection.id,
     };
 
-    const res = await selectionsService.recognize(req);
-    if (!res) {
-      return selection;
-    }
-
     const resSelection: Selection = {
       ...selection,
-      text: res.text,
-      confidence: res.confidence,
     };
+
+    const res = await selectionsService.recognize(req);
+    if (!res) {
+      resSelection.text = 'Error: text is not recognized...';
+
+    } else {
+      resSelection.text = res.text;
+      resSelection.confidence = res.confidence;
+    }
 
     return resSelection;
   }

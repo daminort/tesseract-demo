@@ -1,5 +1,6 @@
 import { makeObservable, action, observable, runInAction } from 'mobx';
 
+import { TEMP_NAME } from 'common/constants/selections';
 import { RootStore } from 'stores/Root/store';
 import { selectionsModel } from 'models/SelectionsModel';
 import { Selection, Selections } from './types';
@@ -18,6 +19,8 @@ class SelectionsStore {
 
       selectionUpsert: action.bound,
       selectionUpdate: action.bound,
+      selectionRecognize: action.bound,
+
       selectionRemove: action,
       selectionActivate: action,
       reset: action,
@@ -34,7 +37,19 @@ class SelectionsStore {
     this.selections.push(selection);
 
     // side-effect
-    const resSelection = await selectionsModel.recognize(selection, '0000');
+    await this.selectionRecognize(selection.id);
+  }
+
+  async selectionRecognize(id: string): Promise<void> {
+    const { id: fileID } = this.rootStore.fileStore.file;
+    const selection = this.selections.find(selection => selection.id === id);
+    if (!selection) {
+      return;
+    }
+
+    selection.text = TEMP_NAME;
+
+    const resSelection = await selectionsModel.recognize(selection, fileID);
     this.selectionUpdate(resSelection);
   }
 

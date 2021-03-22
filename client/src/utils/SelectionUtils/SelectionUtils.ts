@@ -1,6 +1,7 @@
 import { v4 as uuid } from 'uuid';
 import { SelectionSize, Selection } from 'stores/Selections/types';
 import { Point } from 'utils/SelectionUtils/types';
+import { TEMP_NAME } from 'common/constants/selections';
 
 class SelectionUtils {
 
@@ -15,7 +16,7 @@ class SelectionUtils {
         width: Number((screen.width * scale).toFixed(2)),
         height: Number((screen.height * scale).toFixed(2)),
       },
-      text: 'Recognizing...',
+      text: TEMP_NAME,
       confidence: 0,
     }
 

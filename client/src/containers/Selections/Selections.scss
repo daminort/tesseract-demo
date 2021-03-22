@@ -17,6 +17,11 @@
     background-color: transparent;
     transition: all 0.2s ease;
 
+    .selection-actions {
+      opacity: 0;
+      transition: all 0.2s ease;
+    }
+
     &:before,
     &:after {
       position: absolute;
@@ -38,6 +43,9 @@
 
     &:hover {
       background-color: $bg-selected-item;
+      .selection-actions {
+        opacity: 1;
+      }
     }
 
     .title {

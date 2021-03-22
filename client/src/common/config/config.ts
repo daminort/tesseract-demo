@@ -1,6 +1,6 @@
 import { Config } from 'common/config/types';
 
-const { NODE_ENV } = process.env;
+const { NODE_ENV, PUBLIC_URL } = process.env;
 
 const isDevelopment = (NODE_ENV === 'development');
 const isProduction = (NODE_ENV === 'production');
@@ -11,4 +11,5 @@ export const config: Config = {
   isProduction,
   baseURL,
   apiURL: `${baseURL}/api`,
+  iconsURL: `${PUBLIC_URL}/icons`,
 };

@@ -13,7 +13,6 @@ class BrowserUtils {
 
     const { width, height, padding } = getComputedStyle(element);
     const rect = element.getBoundingClientRect();
-    console.log('BrowserUtils.ts, workspaceParams [16]: ', rect);
 
     const realWidth = Number(width.replace('px', ''));
     const realHeight = Number(height.replace('px', ''));

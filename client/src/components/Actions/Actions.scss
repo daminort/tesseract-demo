@@ -1,0 +1,21 @@
+@import "common/styles/theme";
+
+.selection-actions {
+    position: absolute;
+    top: -0.6rem;
+    right: 0.25rem;
+    padding: 0.125rem 0.5rem;
+    background-color: $bg-primary;
+    border-radius: 0.5rem;
+
+    img {
+        width: 0.9rem;
+        height: 0.9rem;
+        margin-right: 0.5rem;
+        filter: invert(0.3) brightness(1);
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}

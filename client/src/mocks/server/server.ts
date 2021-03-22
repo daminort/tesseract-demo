@@ -18,6 +18,7 @@ function createMockServer() {
   createServer({
     routes() {
       this.namespace = '/api';
+      this.timing = 500;
 
       if (options[RoutesAPI.recognize]) {
         recognize(this);
@@ -25,6 +26,8 @@ function createMockServer() {
       if (options[RoutesAPI.upload]) {
         // upload mocks
       }
+
+      this.passthrough();
     }
   })
 }

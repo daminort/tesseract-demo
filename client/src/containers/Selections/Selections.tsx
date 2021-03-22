@@ -4,6 +4,7 @@ import { observer, useObserver } from 'mobx-react-lite';
 
 import { useStore } from 'stores/Root';
 import { SelectionsStore } from 'stores/Selections';
+import { Actions } from 'components/Actions';
 
 import './Selections.scss';
 
@@ -14,6 +15,14 @@ const Selections: FC = observer(() => {
 
   const onClick = useCallback((id) => () => {
     selectionsStore.selectionActivate(id);
+  }, []);
+
+  const onReload = useCallback((id) => {
+    selectionsStore.selectionRecognize(id);
+  }, []);
+
+  const onRemove = useCallback((id) => {
+    selectionsStore.selectionRemove(id);
   }, []);
 
   return useObserver(() => (
@@ -50,6 +59,12 @@ const Selections: FC = observer(() => {
               <span className="real">{realEnd}</span>
             </div>
             <div className="badge">{index + 1}</div>
+
+            <Actions
+              id={id}
+              onReload={onReload}
+              onRemove={onRemove}
+            />
           </div>
         );
       })}
