@@ -41,12 +41,13 @@ const Selections: FC = observer(() => {
         });
 
         const showConfidence = (confidence > 0);
+        const resConfidence = confidence < 100 ? confidence.toFixed(1) : 100;
 
         return (
           <div key={id} className={selectionClass} onClick={onClick(id)}>
             <div className="title">{text}</div>
             {showConfidence && (
-              <div className="confidence" title="Confidence">{confidence.toFixed(1)} %</div>
+              <div className="confidence" title="Confidence">{resConfidence}&nbsp;%</div>
             )}
             <div className="start">
               <span className="screen">{screenStart}</span>

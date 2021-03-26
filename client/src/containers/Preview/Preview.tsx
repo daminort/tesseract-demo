@@ -106,7 +106,7 @@ const Preview: FC = observer(() => {
   }, [showRectangle, start, end, createRectangleStyle]);
 
   return useObserver(() => (
-    <div className="root-preview" ref={ref} style={outerStyle}>
+    <div className="root-preview" ref={ref}>
       <img src={url} alt={url} />
 
       {selectionsStore.selections.map(selection => {

@@ -3,7 +3,7 @@
 .root-preview {
     border-radius: $b-radius-md;
     position: relative;
-    max-width: 60%;
+    width: 100%;
     padding: 0.5rem;
     min-height: calc(100vh - 64px);
     box-shadow: $shadow-primary;

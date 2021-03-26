@@ -6,5 +6,18 @@
   .content {
     display: flex;
     padding: 1rem 2rem;
+    justify-content: space-between;
+
+    .preview {
+      width: calc(60vw - 2rem);
+      min-width: calc(60vw - 2rem);
+    }
+
+    .selections {
+      width: calc(40vw - 2rem);
+      min-width: calc(40vw - 2rem);
+      max-width: calc(40vw - 2rem);
+      padding: 0 1rem 0 2rem;
+    }
   }
 }

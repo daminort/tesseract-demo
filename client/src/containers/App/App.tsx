@@ -13,8 +13,12 @@ const App: FC = () => {
       <RootProvider>
         <NavBar />
         <div className="content">
-          <Preview />
-          <Selections />
+          <div className="preview">
+            <Preview />
+          </div>
+          <div className="selections">
+            <Selections />
+          </div>
         </div>
       </RootProvider>
     </div>
