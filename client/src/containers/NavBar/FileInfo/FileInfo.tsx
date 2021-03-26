@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { observer } from 'mobx-react-lite';
 
 import { useStore } from 'stores/Root';
-import { FileStore } from 'stores/File';
+import { ImageFileStore } from 'stores/ImageFile';
 import { StatsStore } from 'stores/Stats';
 
 import './FileInfo.scss';
@@ -10,10 +10,10 @@ import './FileInfo.scss';
 const FileInfo: FC = observer(() => {
 
   const statsStore = useStore<StatsStore>('statsStore');
-  const fileStore = useStore<FileStore>('fileStore');
+  const imageFileStore = useStore<ImageFileStore>('imageFileStore');
 
   const { image, workspace, scale } = statsStore;
-  const { name } = fileStore.file;
+  const { name } = imageFileStore.imageFile;
 
   const ratio = (image.ratio).toFixed(3);
   const workspaceWidth = (workspace.width).toFixed(0);

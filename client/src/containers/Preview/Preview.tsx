@@ -5,7 +5,7 @@ import { observer, useObserver } from 'mobx-react-lite';
 import { BrowserUtils } from 'utils/BrowserUtils';
 import { SelectionUtils, Point } from 'utils/SelectionUtils';
 import { useStore } from 'stores/Root';
-import { FileStore } from 'stores/File';
+import { ImageFileStore } from 'stores/ImageFile';
 import { StatsStore } from 'stores/Stats';
 import { SelectionSize, SelectionsStore } from 'stores/Selections';
 
@@ -22,14 +22,14 @@ const Preview: FC = observer(() => {
   const [end, setEnd] = useState<Point>(initPoint);
 
   const ref = useRef<HTMLDivElement>(null);
-  const fileStore = useStore<FileStore>('fileStore');
+  const imageFileStore = useStore<ImageFileStore>('imageFileStore');
   const selectionsStore = useStore<SelectionsStore>('selectionsStore');
   const statsStore = useStore<StatsStore>('statsStore');
 
-  const { file } = fileStore;
+  const { imageFile } = imageFileStore;
   const { image, workspace, scale } = statsStore;
 
-  const { url } = file;
+  const { url } = imageFile;
   const { width, ratio } = image;
   const { padding } = workspace;
 

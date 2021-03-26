@@ -1,4 +1,4 @@
-export type File = {
+export type ImageFile = {
   id: string,
   name: string,
   url: string,

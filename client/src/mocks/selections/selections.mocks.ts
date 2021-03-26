@@ -1,3 +1,4 @@
+import faker from 'faker';
 import { Request } from 'miragejs';
 
 import { RecognizeRequest, RecognizeResponse } from 'services/SelectionsService/types';
@@ -13,7 +14,7 @@ function createRecognizeResponse(req: Request): RecognizeResponse {
     left: body.left,
     width: body.width,
     height: body.height,
-    text: 'here will be selected text',
+    text: faker.lorem.sentence(),
     confidence: 93.4,
   };
 
@@ -22,4 +23,4 @@ function createRecognizeResponse(req: Request): RecognizeResponse {
 
 export {
   createRecognizeResponse,
-}
+};

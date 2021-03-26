@@ -41,7 +41,7 @@ class SelectionsStore {
   }
 
   async selectionRecognize(id: string): Promise<void> {
-    const { id: fileID } = this.rootStore.fileStore.file;
+    const { id: fileID } = this.rootStore.imageFileStore.imageFile;
     const selection = this.selections.find(selection => selection.id === id);
     if (!selection) {
       return;
