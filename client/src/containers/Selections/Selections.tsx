@@ -17,8 +17,8 @@ const Selections: FC = observer(() => {
     selectionsStore.selectionActivate(id);
   }, []);
 
-  const onReload = useCallback((id) => {
-    selectionsStore.selectionRecognize(id);
+  const onReload = useCallback(async (id) => {
+    await selectionsStore.selectionRecognize(id);
   }, []);
 
   const onRemove = useCallback((id) => {

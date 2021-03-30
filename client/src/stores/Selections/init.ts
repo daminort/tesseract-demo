@@ -1,6 +1,6 @@
-import { Selections } from 'stores/Selections/types';
+import { SelectionModel } from 'models/SelectionModel';
 
-const initSelections: Selections = [];
+const initSelections: Array<SelectionModel> = [];
 
 export {
   initSelections,

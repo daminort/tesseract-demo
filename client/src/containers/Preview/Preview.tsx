@@ -7,7 +7,8 @@ import { SelectionUtils, Point } from 'utils/SelectionUtils';
 import { useStore } from 'stores/Root';
 import { ImageFileStore } from 'stores/ImageFile';
 import { StatsStore } from 'stores/Stats';
-import { SelectionSize, SelectionsStore } from 'stores/Selections';
+import { SelectionsStore } from 'stores/Selections';
+import { SelectionModel, SelectionSize } from 'models/SelectionModel';
 
 import './Preview.scss';
 
@@ -29,7 +30,7 @@ const Preview: FC = observer(() => {
   const { imageFile } = imageFileStore;
   const { image, workspace, scale } = statsStore;
 
-  const { url } = imageFile;
+  const { id: fileID, url } = imageFile;
   const { width, ratio } = image;
   const { padding } = workspace;
 
@@ -62,12 +63,12 @@ const Preview: FC = observer(() => {
     });
   }, [calculateCoords, setStart]);
 
-  const onMouseUp = useCallback((event: MouseEvent<HTMLDivElement>) => {
+  const onMouseUp = useCallback(async (event: MouseEvent<HTMLDivElement>) => {
     const { top, left } = calculateCoords(event);
     const rectangle = SelectionUtils.createRectangle(start, { x: left, y: top });
-    const selection = SelectionUtils.createSelection(rectangle, scale);
+    const selection = new SelectionModel(fileID, rectangle, scale);
 
-    selectionsStore.selectionUpsert(selection);
+    await selectionsStore.selectionUpsert(selection);
     setStart(initPoint);
     setEnd(initPoint);
 
@@ -89,11 +90,6 @@ const Preview: FC = observer(() => {
       }
     });
   }, [url, ratio]);
-
-  const outerStyle = useMemo(() => ({
-    width: `${width}px`,
-    height: 'auto',
-  }), [width]);
 
   const showRectangle = (start.x + start.y) > 0;
   const rectangleStyle = useMemo(() => {
