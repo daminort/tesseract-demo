@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 import { RootProvider } from 'stores/Root';
 import { NavBar } from 'containers/NavBar';
 import { Preview } from 'containers/Preview';
-import { Selections } from 'containers/Selections';
+import { SelectionsList } from 'containers/SelectionsList';
 
 import './App.scss';
 
@@ -17,7 +17,7 @@ const App: FC = () => {
             <Preview />
           </div>
           <div className="selections">
-            <Selections />
+            <SelectionsList />
           </div>
         </div>
       </RootProvider>

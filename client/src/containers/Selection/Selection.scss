@@ -1,10 +1,6 @@
 @import "common/styles/theme";
 
-.root-selections {
-  padding: 2rem 0;
-  width: 100%;
-
-  .selection {
+.selection {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -86,31 +82,12 @@
       text-align: right;
     }
 
-    .badge {
-      position: absolute;
-      top: 0.25rem;
-      left: 0.25rem;
-      background: $bg-info-secondary;
-      border-radius: 50%;
-      color: $text-contrast;
-      font-size: 0.7rem;
-      width: 1.2rem;
-      height: 1.2rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
     &.active {
       background-color: $bg-info-secondary;
       color: $text-contrast;
-      .badge {
-        background: $selection-bg-accent;
-      }
       .confidence {
         color: $text-contrast;
       }
     }
 
   }
-}

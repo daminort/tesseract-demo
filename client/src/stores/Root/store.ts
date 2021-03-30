@@ -1,15 +1,15 @@
 import { ImageFileStore } from 'stores/ImageFile';
-import { SelectionsStore } from 'stores/Selections';
+import { SelectionsListStore } from 'stores/SelectionsList';
 import { StatsStore } from 'stores/Stats';
 
 class RootStore {
   imageFileStore: ImageFileStore;
-  selectionsStore: SelectionsStore;
+  selectionsListStore: SelectionsListStore;
   statsStore: StatsStore;
 
   constructor() {
     this.imageFileStore = new ImageFileStore(this);
-    this.selectionsStore = new SelectionsStore(this);
+    this.selectionsListStore = new SelectionsListStore(this);
     this.statsStore = new StatsStore(this);
   }
 }

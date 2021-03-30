@@ -7,7 +7,7 @@ import { SelectionUtils, Point } from 'utils/SelectionUtils';
 import { useStore } from 'stores/Root';
 import { ImageFileStore } from 'stores/ImageFile';
 import { StatsStore } from 'stores/Stats';
-import { SelectionsStore } from 'stores/Selections';
+import { SelectionsListStore } from 'stores/SelectionsList';
 import { SelectionModel, SelectionSize } from 'models/SelectionModel';
 
 import './Preview.scss';
@@ -24,10 +24,11 @@ const Preview: FC = observer(() => {
 
   const ref = useRef<HTMLDivElement>(null);
   const imageFileStore = useStore<ImageFileStore>('imageFileStore');
-  const selectionsStore = useStore<SelectionsStore>('selectionsStore');
+  const selectionsListStore = useStore<SelectionsListStore>('selectionsListStore');
   const statsStore = useStore<StatsStore>('statsStore');
 
   const { imageFile } = imageFileStore;
+  const { selectionsList, activeID } = selectionsListStore;
   const { image, workspace, scale } = statsStore;
 
   const { id: fileID, url } = imageFile;
@@ -65,10 +66,9 @@ const Preview: FC = observer(() => {
 
   const onMouseUp = useCallback(async (event: MouseEvent<HTMLDivElement>) => {
     const { top, left } = calculateCoords(event);
-    const rectangle = SelectionUtils.createRectangle(start, { x: left, y: top });
-    const selection = new SelectionModel(fileID, rectangle, scale);
+    const screenRectangle = SelectionUtils.createRectangle(start, { x: left, y: top });
 
-    await selectionsStore.selectionUpsert(selection);
+    await selectionsListStore.selectionCreate(screenRectangle);
     setStart(initPoint);
     setEnd(initPoint);
 
@@ -105,10 +105,10 @@ const Preview: FC = observer(() => {
     <div className="root-preview" ref={ref}>
       <img src={url} alt={url} />
 
-      {selectionsStore.selections.map(selection => {
+      {selectionsList.map(selection => {
         const style = createRectangleStyle(selection.screen);
         const className = clsx('selection', {
-          active: selection.id === selectionsStore.activeID,
+          active: selection.id === activeID,
         });
         return (
           <div className={className} key={selection.id} style={style}></div>
