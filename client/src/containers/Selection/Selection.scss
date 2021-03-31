@@ -1,11 +1,11 @@
 @import "common/styles/theme";
 
-.selection {
+.root-selection {
     display: flex;
     align-items: center;
     justify-content: space-between;
     position: relative;
-    padding: 1rem 1rem 1rem 2rem;
+    padding: 1rem;
     border: 1px $bg-info-secondary solid;
     border-radius: $b-radius-sm;
     margin-bottom: 2.5rem;
@@ -49,7 +49,6 @@
       white-space: nowrap;
       overflow-x: hidden;
       text-overflow: ellipsis;
-      //max-width: calc(100% - 4.5rem);
     }
     .confidence {
       text-align: right;

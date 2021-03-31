@@ -1,6 +1,10 @@
 import axios, { AxiosError, AxiosInstance, AxiosResponse } from 'axios';
 import { config } from 'common/config/config';
 
+type AxiosData<T> = {
+  data: T,
+}
+
 class BaseService {
 
   get agent(): AxiosInstance {
@@ -12,9 +16,9 @@ class BaseService {
   }
 
   async processResponse<T>(response: AxiosResponse): Promise<T> {
-    const axiosData = response?.data; // 'data' from Axios
-    const data = axiosData && axiosData?.data; // 'data' from our backend: { status: 200, data: {...} }
-    const result = data || axiosData;
+    const axiosData: AxiosData<T> = response.data; // 'data' from Axios
+    const serverData = axiosData && axiosData.data; // 'data' from our backend: { status: 200, data: {...} }
+    const result = serverData || axiosData;
 
     return (result as T);
   }

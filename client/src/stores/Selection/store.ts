@@ -1,6 +1,7 @@
 import { makeObservable, action, observable } from 'mobx';
 import { v4 as uuid } from 'uuid';
 
+import { TEXT_TEMPORARY, TEXT_ERROR } from 'common/constants/selections';
 import { RootStore } from 'stores/Root';
 import { selectionsService, RecognizeRequest } from 'services/SelectionsService';
 import { SelectionSize } from 'stores/Selection/types';
@@ -14,7 +15,7 @@ class SelectionStore {
   public readonly screen: SelectionSize;
   public readonly real: SelectionSize;
 
-  public text = '';
+  public text = TEXT_TEMPORARY;
   public confidence = 0;
 
   constructor(rootStore: RootStore, screen: SelectionSize) {
@@ -25,6 +26,8 @@ class SelectionStore {
       id: observable,
       screen: observable,
       real: observable,
+      text: observable,
+      confidence: observable,
 
       recognize: action.bound,
       update: action.bound,
@@ -55,7 +58,7 @@ class SelectionStore {
 
     const res = await selectionsService.recognize(req);
     if (!res) {
-      this.update('Text is not recognized...', 0);
+      this.update(TEXT_ERROR, 0);
 
     } else {
       this.update(res.text, res.confidence);

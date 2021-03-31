@@ -12,24 +12,24 @@ const SelectionsList: FC = observer(() => {
   const selectionsListStore = useStore<SelectionsListStore>('selectionsListStore');
   const { selectionsList, activeID } = selectionsListStore;
 
-  const onClick = useCallback((id) => {
+  const onClick = useCallback((id: string) => {
     selectionsListStore.selectionActivate(id);
   }, []);
 
-  const onRemove = useCallback((id) => {
+  const onRemove = useCallback((id: string) => {
     selectionsListStore.selectionRemove(id);
   }, []);
 
   return useObserver(() => (
     <div className="root-selections">
-      {selectionsList.map((selection, index) => {
-        const { id } = selection;
+      {selectionsList.map((selection) => {
+        const isActive = selection.id === activeID;
 
         return (
           <Selection
-            key={id}
-            id={id}
-            isActive={id === activeID}
+            key={selection.id}
+            selection={selection}
+            isActive={isActive}
             onClick={onClick}
             onRemove={onRemove}
           />

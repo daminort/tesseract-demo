@@ -1,11 +1,11 @@
-import { RoutesAPI } from 'common/enums/routes-api';
 import { createServer } from 'miragejs';
+import { RoutesAPI } from 'common/enums/routes-api';
 
 import { config } from 'common/config/config';
 import { options } from 'mocks/server/options';
 import { recognize } from 'mocks/selections/selections.routes';
 
-function createMockServer() {
+function createMockServer(): void {
   if (!config.isDevelopment) {
     return;
   }

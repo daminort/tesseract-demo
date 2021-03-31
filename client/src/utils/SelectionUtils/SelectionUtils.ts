@@ -1,4 +1,4 @@
-import { SelectionSize } from 'models/SelectionModel';
+import { SelectionSize } from 'stores/Selection';
 import { Point } from 'utils/SelectionUtils/types';
 
 class SelectionUtils {

@@ -8,7 +8,7 @@ import { useStore } from 'stores/Root';
 import { ImageFileStore } from 'stores/ImageFile';
 import { StatsStore } from 'stores/Stats';
 import { SelectionsListStore } from 'stores/SelectionsList';
-import { SelectionModel, SelectionSize } from 'models/SelectionModel';
+import { SelectionSize } from 'stores/Selection';
 
 import './Preview.scss';
 
@@ -31,8 +31,8 @@ const Preview: FC = observer(() => {
   const { selectionsList, activeID } = selectionsListStore;
   const { image, workspace, scale } = statsStore;
 
-  const { id: fileID, url } = imageFile;
-  const { width, ratio } = image;
+  const { url } = imageFile;
+  const { ratio } = image;
   const { padding } = workspace;
 
   const calculateCoords = useMemo(() => (event: MouseEvent<HTMLDivElement>) => {
