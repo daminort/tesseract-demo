@@ -7,7 +7,8 @@ import { SelectionUtils, Point } from 'utils/SelectionUtils';
 import { useStore } from 'stores/Root';
 import { ImageFileStore } from 'stores/ImageFile';
 import { StatsStore } from 'stores/Stats';
-import { SelectionSize, SelectionsStore } from 'stores/Selections';
+import { SelectionsListStore } from 'stores/SelectionsList';
+import { SelectionSize } from 'stores/Selection';
 
 import './Preview.scss';
 
@@ -23,14 +24,15 @@ const Preview: FC = observer(() => {
 
   const ref = useRef<HTMLDivElement>(null);
   const imageFileStore = useStore<ImageFileStore>('imageFileStore');
-  const selectionsStore = useStore<SelectionsStore>('selectionsStore');
+  const selectionsListStore = useStore<SelectionsListStore>('selectionsListStore');
   const statsStore = useStore<StatsStore>('statsStore');
 
   const { imageFile } = imageFileStore;
+  const { selectionsList, activeID } = selectionsListStore;
   const { image, workspace, scale } = statsStore;
 
   const { url } = imageFile;
-  const { width, ratio } = image;
+  const { ratio } = image;
   const { padding } = workspace;
 
   const calculateCoords = useMemo(() => (event: MouseEvent<HTMLDivElement>) => {
@@ -62,12 +64,11 @@ const Preview: FC = observer(() => {
     });
   }, [calculateCoords, setStart]);
 
-  const onMouseUp = useCallback((event: MouseEvent<HTMLDivElement>) => {
+  const onMouseUp = useCallback(async (event: MouseEvent<HTMLDivElement>) => {
     const { top, left } = calculateCoords(event);
-    const rectangle = SelectionUtils.createRectangle(start, { x: left, y: top });
-    const selection = SelectionUtils.createSelection(rectangle, scale);
+    const screenRectangle = SelectionUtils.createRectangle(start, { x: left, y: top });
 
-    selectionsStore.selectionUpsert(selection);
+    await selectionsListStore.selectionCreate(screenRectangle);
     setStart(initPoint);
     setEnd(initPoint);
 
@@ -90,11 +91,6 @@ const Preview: FC = observer(() => {
     });
   }, [url, ratio]);
 
-  const outerStyle = useMemo(() => ({
-    width: `${width}px`,
-    height: 'auto',
-  }), [width]);
-
   const showRectangle = (start.x + start.y) > 0;
   const rectangleStyle = useMemo(() => {
     if (!showRectangle) {
@@ -109,10 +105,10 @@ const Preview: FC = observer(() => {
     <div className="root-preview" ref={ref}>
       <img src={url} alt={url} />
 
-      {selectionsStore.selections.map(selection => {
+      {selectionsList.map(selection => {
         const style = createRectangleStyle(selection.screen);
         const className = clsx('selection', {
-          active: selection.id === selectionsStore.activeID,
+          active: selection.id === activeID,
         });
         return (
           <div className={className} key={selection.id} style={style}></div>

@@ -1,3 +1,4 @@
+import { AxiosError } from 'axios';
 import { RoutesAPI } from 'common/enums/routes-api';
 import { BaseService } from 'services/BaseService';
 import { RecognizeRequest, RecognizeResponse } from 'services/SelectionsService/types';
@@ -9,8 +10,8 @@ class SelectionsService extends BaseService {
       const response = await this.agent.post(RoutesAPI.recognize, data);
       return this.processResponse<RecognizeResponse>(response);
 
-    } catch (error) {
-      return this.processError(error);
+    } catch (error: unknown) {
+      return this.processError(error as AxiosError);
     }
   }
 }

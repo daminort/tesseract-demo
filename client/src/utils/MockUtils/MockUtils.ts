@@ -4,7 +4,7 @@ class MockUtils {
     let result = {};
     try {
       result = JSON.parse(json);
-    } catch (error) {
+    } catch (error: unknown) {
       // nothing
     }
 

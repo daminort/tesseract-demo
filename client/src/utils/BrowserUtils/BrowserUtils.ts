@@ -12,7 +12,6 @@ class BrowserUtils {
     }
 
     const { width, height, padding } = getComputedStyle(element);
-    const rect = element.getBoundingClientRect();
 
     const realWidth = Number(width.replace('px', ''));
     const realHeight = Number(height.replace('px', ''));
