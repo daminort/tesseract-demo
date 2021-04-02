@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import './Button.scss';
 
 type Props = {
   onClick: () => void,

@@ -1,5 +1,5 @@
 import React, { FC, useCallback } from 'react';
-import { observer, useObserver } from 'mobx-react-lite';
+import { observer } from 'mobx-react-lite';
 
 import { useStore } from 'stores/Root';
 import { SelectionsListStore } from 'stores/SelectionsList';

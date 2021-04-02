@@ -1,6 +1,6 @@
 import React, { FC, useCallback } from 'react';
 import clsx from 'clsx';
-import { observer, useObserver } from 'mobx-react-lite';
+import { observer } from 'mobx-react-lite';
 
 import { SelectionStore } from 'stores/Selection';
 import { Actions } from 'components/Actions';

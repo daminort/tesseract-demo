@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import React, { FC, useRef, useMemo, useEffect, useCallback, useState, MouseEvent } from 'react';
-import { observer, useObserver } from 'mobx-react-lite';
+import { observer } from 'mobx-react-lite';
 
 import { BrowserUtils } from 'utils/BrowserUtils';
 import { SelectionUtils, Point } from 'utils/SelectionUtils';
