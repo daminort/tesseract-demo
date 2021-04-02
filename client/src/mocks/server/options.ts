@@ -1,9 +1,9 @@
-import { RoutesAPI } from 'common/enums/routes-api';
+import { ROUTES } from 'common/constants/routes';
 
 /**
  * Defines which API endpoints should be mocked
  */
 export const options = {
-  [RoutesAPI.upload]: true,
-  [RoutesAPI.recognize]: true,
+  [ROUTES.upload]: true,
+  [ROUTES.recognize]: true,
 };

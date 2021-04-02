@@ -101,7 +101,7 @@ const Preview: FC = observer(() => {
     return createRectangleStyle(rectangle);
   }, [showRectangle, start, end, createRectangleStyle]);
 
-  return useObserver(() => (
+  return (
     <div className="root-preview" ref={ref}>
       <img src={url} alt={url} />
 
@@ -125,7 +125,7 @@ const Preview: FC = observer(() => {
         onMouseMove={onMouseMove}
       />
     </div>
-  ))
+  )
 });
 
 export { Preview };

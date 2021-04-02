@@ -39,7 +39,7 @@ const Selection: FC<Props> = observer(({ selection, isActive, onClick, onRemove 
   const showConfidence = (confidence > 0);
   const resConfidence = confidence < 100 ? confidence.toFixed(1) : 100;
 
-  return useObserver(() =>(
+  return (
     <div className={selectionClass} onClick={onSelectionClick}>
       <div className="title">{text}</div>
       {showConfidence && (
@@ -62,7 +62,7 @@ const Selection: FC<Props> = observer(({ selection, isActive, onClick, onRemove 
         onRemove={onRemove}
       />
     </div>
-  ));
+  );
 });
 
 export { Selection };

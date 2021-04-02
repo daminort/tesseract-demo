@@ -20,7 +20,7 @@ const SelectionsList: FC = observer(() => {
     selectionsListStore.selectionRemove(id);
   }, []);
 
-  return useObserver(() => (
+  return (
     <div className="root-selections">
       {selectionsList.map((selection) => {
         const isActive = selection.id === activeID;
@@ -36,7 +36,7 @@ const SelectionsList: FC = observer(() => {
         );
       })}
     </div>
-  ));
+  );
 });
 
 export { SelectionsList };
