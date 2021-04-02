@@ -1,5 +1,6 @@
 import { makeObservable, action, observable } from 'mobx';
 
+import { uploadService } from 'services/UploadService';
 import { RootStore } from 'stores/Root/store';
 import { ImageFile } from './types';
 import { initImageFile } from './init';
@@ -13,7 +14,7 @@ class ImageFileStore {
     makeObservable(this, {
       imageFile: observable,
       imageFileUpdate: action,
-      reset: action,
+      imageUpload: action.bound,
     });
   }
 
@@ -25,8 +26,11 @@ class ImageFileStore {
     }
   }
 
-  reset(): void {
-    this.imageFile = initImageFile;
+  async imageUpload(file: File): Promise<void> {
+    const result = await uploadService.upload({ file });
+    if (result) {
+      this.imageFileUpdate(result);
+    }
   }
 }
 

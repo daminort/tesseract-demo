@@ -4,6 +4,7 @@ import { ROUTES } from 'common/constants/routes';
 import { config } from 'common/config/config';
 import { options } from 'mocks/server/options';
 import { recognize } from 'mocks/selections/selections.routes';
+import { upload } from 'mocks/files/files.routes';
 
 function createMockServer(): void {
   if (!config.isDevelopment) {
@@ -24,7 +25,7 @@ function createMockServer(): void {
         recognize(this);
       }
       if (options[ROUTES.upload]) {
-        // upload mocks
+        upload(this);
       }
 
       this.passthrough();

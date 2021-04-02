@@ -9,7 +9,13 @@
   .file {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
     margin-right: 0.5rem;
+    min-width: 15vw;
+    max-width: 15vw;
+    white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
   }
 
   .item {

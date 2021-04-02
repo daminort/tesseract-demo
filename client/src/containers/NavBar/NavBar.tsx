@@ -1,13 +1,18 @@
 import React, { FC, useCallback } from 'react';
 
+import { useStore } from 'stores/Root';
+import { ImageFileStore } from 'stores/ImageFile';
+
 import { FileInfo } from 'containers/NavBar/FileInfo';
 import { Upload } from 'components/Upload';
 import './Navbar.scss';
 
 const NavBar: FC = () => {
 
-  const onUpload = useCallback((file: File) => {
-    console.log('NavBar.tsx,  [10]: ', { file });
+  const imageFileStore = useStore<ImageFileStore>('imageFileStore');
+
+  const onUpload = useCallback(async (file: File) => {
+    await imageFileStore.imageUpload(file);
   }, []);
 
   return (
