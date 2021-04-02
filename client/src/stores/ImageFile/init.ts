@@ -3,8 +3,8 @@ import { ImageFile } from 'stores/ImageFile/types';
 
 const initImageFile: ImageFile = {
   id: uuid(),
-  name: 'book.gif',
-  url: '/images/book.gif',
+  name: 'No file',
+  url: '/images/no-data.png',
 };
 
 export {

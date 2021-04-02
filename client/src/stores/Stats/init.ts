@@ -1,14 +1,9 @@
-import { StatsFile, StatsImage, StatsWorkspace } from './types';
-
-const initFile: StatsFile = {
-  name: 'book',
-  url: '',
-};
+import { StatsImage, StatsWorkspace } from './types';
 
 const initImage: StatsImage = {
-  width: 820,
-  height: 1000,
-  ratio: 1000 / 820,
+  width: 600,
+  height: 800,
+  ratio: 800 / 600,
 };
 
 const initWorkspace: StatsWorkspace = {
@@ -18,7 +13,6 @@ const initWorkspace: StatsWorkspace = {
 };
 
 export {
-  initFile,
   initImage,
   initWorkspace,
 };
