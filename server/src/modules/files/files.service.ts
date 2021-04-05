@@ -1,12 +1,11 @@
 import { promises as fs } from 'fs';
-import { resolve, extname } from 'path';
+import { resolve } from 'path';
 import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { Express } from 'express';
 import { v4 as uuid } from 'uuid';
 
+import { UPLOADS_PATH, IMAGE_EXTENSION } from 'common/constants/files';
 import { FileResponseDto } from 'modules/files/file.response.dto';
-
-const DEST = 'uploads';
 
 @Injectable()
 export class FilesService {
@@ -24,7 +23,7 @@ export class FilesService {
   }
 
   async checkDestination(): Promise<void> {
-    const folder = resolve(DEST);
+    const folder = resolve(UPLOADS_PATH);
 
     let isExist = false;
     try {
@@ -41,24 +40,18 @@ export class FilesService {
     }
   }
 
-  async getExtension(file: Express.Multer.File): Promise<string> {
-    const filePath = resolve(DEST, file.originalname);
-    return extname(filePath);
-  }
-
   async saveFile(file: Express.Multer.File, id: string): Promise<string> {
     await this.checkDestination();
-    const ext = await this.getExtension(file);
-    const fileName = `${id}${ext}`;
+    const fileName = `${id}.${IMAGE_EXTENSION}`;
 
-    const filePath = resolve(DEST, fileName);
+    const filePath = resolve(UPLOADS_PATH, fileName);
     try {
       await fs.writeFile(filePath, file.buffer);
     } catch (err) {
       throw new InternalServerErrorException(`Cannot upload file: ${err?.message}`);
     }
 
-    const fileURL = `${DEST}/${fileName}`;
+    const fileURL = `/${UPLOADS_PATH}/${fileName}`;
     return fileURL;
   }
 }

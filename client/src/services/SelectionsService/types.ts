@@ -1,6 +1,6 @@
 export type RecognizeRequest = {
-  fileID: string;
-  selectionID: string;
+  fileID: string,
+  selectionID: string,
   top: number,
   left: number,
   width: number,

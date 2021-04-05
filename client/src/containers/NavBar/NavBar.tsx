@@ -1,5 +1,6 @@
 import React, { FC, useCallback } from 'react';
 
+import { ACCEPTS } from 'common/constants/images';
 import { useStore } from 'stores/Root';
 import { ImageFileStore } from 'stores/ImageFile';
 
@@ -19,7 +20,7 @@ const NavBar: FC = () => {
     <div className="root-navbar">
       <div className="logo">Tesseract Demo</div>
       <Upload
-        accept="image/*"
+        accept={ACCEPTS}
         onUpload={onUpload}
       />
       <FileInfo />
